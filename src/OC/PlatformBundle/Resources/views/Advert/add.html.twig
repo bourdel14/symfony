@@ -1,0 +1,110 @@
+{# src/OC/PlatformBundle/Resources/views/Advert/add.html.twig #}
+
+{% extends "OCPlatformBundle::layout.html.twig" %}
+
+ {% block ocplatform_body %}
+ <div class="container">
+    <div class="card">
+      <div class="card-block">
+
+        <div class="text-xs-center">
+            <h3>Edit this Advert :</h3>
+        </div>
+
+        <hr class="m-t-2 m-b-2">
+
+          {{ form_start(form, {'attr': {'class': 'form-horizontal validate'}}) }}
+
+          {# Les erreurs générales du formulaire. #}
+
+          {{ form_errors(form) }}
+
+          <!-- Title -->
+
+          <div class="md-form">
+
+            <i class="fa fa-tag prefix"></i>
+
+            {# Affichage des erreurs pour ce champ précis. #}
+            {{ form_errors(form.title) }}
+
+            {# Génération de l'input. #}
+            {{ form_widget(form.title,{'attr': {'class': 'form-control'}}) }}
+
+          </div>
+
+          <!-- Content -->
+
+          <div class="md-form">
+
+            <i class="fa fa-pencil prefix"></i>
+
+              {{ form_errors(form.content) }}
+
+              {{ form_widget(form.content, {'attr': {'class': 'form-control'}}) }}
+
+          </div>
+
+          <!-- City -->
+
+          <div class="md-form">
+
+            <i class="fa fa-home prefix"></i>
+
+              {{ form_errors(form.city) }}
+
+              {{ form_widget(form.city, {'attr': {'class': 'form-control'}}) }}
+
+          </div>
+
+
+          <!-- Author -->
+
+          <div class="md-form">
+
+            <i class="fa fa-user prefix"></i>
+
+            {{ form_errors(form.author) }}
+
+            {{ form_widget(form.author, {'attr': {'class': 'form-control'}}) }}
+
+          </div>
+
+          <!-- Date -->
+
+          <div class="md-form">
+            
+<div class="md-form">
+    <input placeholder="Selected date" type="text" id="date-picker-example" class="form-control datepicker">
+    <label for="date-picker-example">Try me...</label>
+</div>
+
+
+          <!-- Category -->
+
+        <div class="select">
+            {{ form_errors(form.categories, {'attr': {'class': 'form-control'}}) }}
+
+              {{ form_widget(form.categories, {'attr': {'class': 'form-control'}}) }}
+          </div>
+
+          <!-- Published -->
+
+          {{ form_row(form.published) }}
+
+
+          {# Pour le bouton, pas de label ni d'erreur, on affiche juste le widget #}
+          {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary'}}) }}
+
+          {# Génération automatique des champs pas encore écrits.
+             Dans cet exemple, ce serait le champ CSRF (géré automatiquement par Symfony !)
+             et tous les champs cachés (type « hidden »). #}
+          {{ form_rest(form) }}
+          
+          {# Fermeture de la balise <form> du formulaire HTML #}
+          {{ form_end(form) }}
+
+      </div>
+    </div>
+  </div>
+{% endblock %}

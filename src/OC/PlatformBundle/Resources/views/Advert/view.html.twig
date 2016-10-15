@@ -1,0 +1,39 @@
+{# src/OC/PlatformBundle/Resources/views/Advert/view.html.twig #}
+
+{% extends "OCPlatformBundle::layout.html.twig" %}
+
+
+ {% block ocplatform_body %}
+
+ 	<div class="container">
+
+ 		<div class="jumbotron">
+
+ 			<h3>{{ advert.title }}</h3>
+
+			{% for category in listCategories %}
+
+			<div class="chip">
+				{{category.name}}
+			</div>
+
+			{% endfor %}
+
+	 		<hr class="m-y-2">
+
+	 		<p>{{ advert.content|nl2br }}</p>
+
+	 		<p>Publié le {{ advert.date|date("d/m/Y")}}</p>
+
+	 		<button class="btn btn-default"><a style="color:white;" href="{{ path('oc_platform_edit', {'id': advert.id}) }}">Modifier</button>
+
+	 	</div>
+
+	 		
+
+	</div>
+
+
+{% endblock %}
+
+
