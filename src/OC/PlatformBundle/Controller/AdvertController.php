@@ -102,7 +102,7 @@ class AdvertController extends Controller
 
         $advert = $em->getRepository('OCPlatformBundle:Advert')->find($id);
 
-        $listCategories = $advert->getCategories();
+        //$listCategories = $advert->getCategories();
 
         if (null === $advert) {
           throw new NotFoundHttpException("L'annonce d'id " .$id. " n'existe pas.");
@@ -110,7 +110,7 @@ class AdvertController extends Controller
 
         return $this->render('OCPlatformBundle:Advert:view.html.twig', array(
             'advert'         => $advert,
-            'listCategories' => $listCategories
+            'listCategories' => $advert->getCategories()
         ));
 
     }
